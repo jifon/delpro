@@ -8,7 +8,7 @@ import java.util.Date;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
     @Column(nullable = false)
@@ -36,6 +36,13 @@ public class Order {
     private Double height;
 
     @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "send_region")
+    private Region sendRegion;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "send_city")
+    private City sendCity;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_delivery")
     private Address deladdress;
 
@@ -47,9 +54,12 @@ public class Order {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
-    //id_delivery
-    //id_address otp
-    //id_address dostav
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "delivery_region")
+    private Region deliveryRegion;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "delivery_city")
+    private City deliveryCity;
 
-    //
+
 }

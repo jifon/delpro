@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/css/style.css}">
+</head>
+<body>
+<div class="container" style="width: 70%"   >
+    <div class="title">
+        <h2>Форма отправки </h2>
+    </div>
+    <div>
+        <form th:method="GET" th:action="@{/}" th:object="${search}" class="d-flex" style="flex-flow: column" >
+            <h2>Адрес отправки</h2>
+            <label>
+                <span>Выберите страну<span class="required">*</span></span>
+                <select class="country" name="selection">
+                    <option value="select">Выберите страну</option>
+                    <option value="KAZ">Казахстан</option>
+                    <option value="KGZ">Кыргызстан</option>
+                    <option value="TJK">Таджикистан</option>
+                    <option value="TKM">Туркменистан</option>
+                    <option value="UZB">Узбекистан</option>
+                </select>
+            </label>
+            <label>
+                <span>Область<span class="required">*</span></span>
+                <input type="text" th:field="${search.sendRegion}"  placeholder="Выберите область" required>
+            </label>
+            <label>
+                <span>Город<span class="required">*</span></span>
+                <input type="text" name="city" th:field="${search.sendCity}" placeholder="Выберите город">
+            </label>
+            <label>
+                <span>Улица<span class="required">*</span></span>
+                <input type="text" name="street" placeholder="Название улицы" required>
+            </label>
+            <label>
+                <span>Длина посылки<span class="required">*</span></span>
+                <input type="number" name="length" th:field="${search.length}" placeholder="Длина посылки">
+            </label>
+            <label>
+                <span>Ширина посылки<span class="required">*</span></span>
+                <input type="number" name="width" th:field="${search.width}" placeholder="Ширина посылки">
+            </label>
+            <label>
+                <span>Высота посылки<span class="required">*</span></span>
+                <input type="number" name="height" th:field="${search.height}" placeholder="Высота посылки">
+            </label>
+
+            <br>
+            <br>
+            <br>
+
+            <h2>Адрес доставки</h2>
+            <label>
+                <span>Выберите страну<span class="required">*</span></span>
+                <select class="country" name="selection">
+                    <option value="select">Выберите страну</option>
+                    <option value="KAZ">Казахстан</option>
+                    <option value="KGZ">Кыргызстан</option>
+                    <option value="TJK">Таджикистан</option>
+                    <option value="TKM">Туркменистан</option>
+                    <option value="UZB">Узбекистан</option>
+                </select>
+            </label>
+            <label>
+                <span>Область<span class="required">*</span></span>
+                <input type="text" name="city" th:field="${search.deliveryRegion}" placeholder="Выберите область">
+            </label>
+            <label>
+                <span>Город<span class="required">*</span></span>
+                <input type="text" name="city" th:field="${search.deliveryCity}" placeholder="Выберите город">
+            </label>
+            <label>
+                <span>Расстояние<span class="required">*</span></span>
+                <input type="number" name="city" th:field="${search.km}">
+            </label>
+            <label>
+                <span>Улица<span class="required">*</span></span>
+                <input type="text" name="street" placeholder="Название улицы" required>
+<!--            <label>-->
+<!--                <span>Посткод / ZIP <span class="required">*</span></span>-->
+<!--                <input type="text" name="city">-->
+<!--            </label>-->
+                <center>
+                    <button type="submit" class="btn btn-success" style="width: 30%">Поиск</button>
+                </center>
+
+            </label>
+        </form>
+        <div >
+            <br>
+
+
+                <table class="styled-table">
+                    <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Общая цена</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="I : ${delivery}">
+                        <td th:text="${I.name}"></td>
+                        <td th:text="${I.totalCost}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -3,24 +3,18 @@ package com.api.delpro.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+
 @Entity
-@Table(name = "price")
+@Table(name="region")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Price {
-
+public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long priceId;
-
-    @OneToOne(mappedBy = "price")
-    private Delivery delivery;
-
-    @Column(nullable = false)
-    private Double volumetric_weight_price;
-
-
+    private Long id;
+    private String regionName;
 }

@@ -38,6 +38,7 @@ public class DeliveryServiceImpl implements DeliveryService{
 
     @Override
     public List<Delivery> findAllDeliveries() {
+
         return repository.findAll();
     }
 

@@ -1,17 +1,24 @@
 package com.api.delpro.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "delivery")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Delivery {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long deliveryId;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private DeliveryType type;
 
     @Column(nullable = false)

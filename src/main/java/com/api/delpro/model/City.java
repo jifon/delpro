@@ -5,22 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 @Entity
-@Table(name = "price")
+@Table(name="city")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Price {
-
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long priceId;
-
-    @OneToOne(mappedBy = "price")
-    private Delivery delivery;
-
-    @Column(nullable = false)
-    private Double volumetric_weight_price;
-
+    private Long id;
+    private String city;
 
 }
